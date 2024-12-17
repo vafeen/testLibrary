@@ -3,15 +3,14 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("maven-publish")
 }
-group = "com.github.vafeen"
-version = "1.0.0"
 
 android {
+    namespace = "android.vafeen.mylibrary"
     compileSdk = 35
 
     defaultConfig {
         minSdk = 24
-        lint.targetSdk = 35
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -43,14 +42,15 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
-afterEvaluate {
-    publishing {
-        publications {
-            register<MavenPublication>("release") {
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.github.vafeen"
+            artifactId = "testLibrary"
+            version = "1.0.0"
+
+            afterEvaluate {
                 from(components.getByName("release"))
-                groupId = "com.github.vafeen"
-                artifactId = "testLibrary"
-                version = "1.0.0"
             }
         }
     }
