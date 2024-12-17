@@ -1,6 +1,7 @@
 package android.vafeen.testlibrary
 
 import android.os.Bundle
+import android.vafeen.mylibrary.TestMyLibrary
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -14,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import android.vafeen.testlibrary.ui.theme.TestLibraryTheme
 
 class MainActivity : ComponentActivity() {
+    val x = TestMyLibrary()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
